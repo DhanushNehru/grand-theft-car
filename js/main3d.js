@@ -263,7 +263,7 @@ function update(dt) {
     const grip = Math.min(1, Math.abs(car.speed) / 16);
     car.angle -= steer * 1.5 * grip * dt * Math.sign(car.speed) * (keys.brake ? 1.8 : 1);
   }
-  if (keys.brake) car.speed -= car.speed * 2.2 * dt;
+  if (keys.brake) car.speed -= car.speed * 0.9 * dt;
   const gripT = keys.brake ? 2.4 : 9;
   const tvx = Math.sin(car.angle) * car.speed, tvz = Math.cos(car.angle) * car.speed;
   car.vx += (tvx - car.vx) * Math.min(1, gripT * dt);

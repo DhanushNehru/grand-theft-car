@@ -33,13 +33,13 @@
     background: linear-gradient(180deg, #ffd76d, #ffb35c); border: none; border-radius: 10px; padding: 14px 42px; }
   #start-btn:hover { filter: brightness(1.08); }
   #touch { display: none; }
-  #touch .tcluster { position: absolute; bottom: 84px; display: flex; gap: 14px; pointer-events: auto; }
-  #touch .left { left: 18px; }
-  #touch .right { right: 18px; align-items: flex-end; }
-  #touch button { width: 68px; height: 68px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25);
-    background: rgba(20,26,38,.6); color: #e8ecf3; font-size: 24px; font-weight: 700; touch-action: none; user-select: none; -webkit-user-select: none; }
+  #touch .tcluster { position: absolute; bottom: 84px; display: flex; gap: 10px; pointer-events: auto; }
+  #touch .left { left: 14px; align-items: flex-end; }
+  #touch .right { right: 14px; align-items: flex-end; }
+  #touch button { width: 58px; height: 58px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25);
+    background: rgba(20,26,38,.6); color: #e8ecf3; font-size: 22px; font-weight: 700; touch-action: none; user-select: none; -webkit-user-select: none; }
   #touch button:active { background: rgba(255,183,92,.55); }
-  #touch .drift { width: 84px; font-size: 14px; letter-spacing: 1px; color: #ffd76d; }
+  #touch .drift { width: 58px; font-size: 11px; letter-spacing: 1px; color: #ffd76d; }
   @media (pointer: coarse) {
     #touch { display: block; }
     #hint { display: none; }
@@ -68,9 +68,9 @@
     <div class="tcluster left">
       <button data-k="left" aria-label="Steer left">&#9664;</button>
       <button data-k="right" aria-label="Steer right">&#9654;</button>
+      <button class="drift" data-k="brake" aria-label="Handbrake">DRIFT</button>
     </div>
     <div class="tcluster right">
-      <button class="drift" data-k="brake" aria-label="Handbrake">DRIFT</button>
       <button data-k="up" aria-label="Accelerate">&#9650;</button>
       <button data-k="down" aria-label="Brake and reverse">&#9660;</button>
     </div>
