@@ -128,7 +128,7 @@ export class Game {
 
     // DOM
     this.el = {};
-    for (const id of ['cash', 'heat', 'mission-box', 'mission-title', 'mission-text', 'mission-timer', 'speed', 'hint', 'toast', 'minimap', 'busted', 'overlay', 'touch']) {
+    for (const id of ['cash', 'heat', 'mission-box', 'mission-title', 'mission-text', 'mission-timer', 'speed', 'hint', 'toast', 'minimap', 'busted', 'busted-sub', 'overlay', 'touch']) {
       this.el[id] = document.getElementById(id);
     }
     this.mmCtx = this.el['minimap'].getContext('2d');
@@ -271,6 +271,7 @@ export class Game {
 
     this.updatePeds(dt);
     this.updateCarCollisions(dt);
+    this.updateBust(dt);
     this.updateMission(dt);
     this.updateCamera(dt);
 
@@ -449,7 +450,9 @@ export class Game {
     if (solidAt(this.world, aheadX, aheadY)) steerAway = 1.4;
     c.angle = angleLerp(c.angle, want + steerAway * (Math.sin(this.time * 2 + c.x) > 0 ? 1 : -1), clamp(2.6 * dt, 0, 1));
     const target = 310;
-    c.speed = lerp(c.speed, target, clamp(2.5 * dt, 0, 1));
+    // Brake on arrival so contact holds long enough for a bust.
+    const closing = dist(c, p) < 44 ? 0 : target;
+    c.speed = lerp(c.speed, closing, clamp(2.5 * dt, 0, 1));
     c.vx = Math.cos(c.angle) * c.speed; c.vy = Math.sin(c.angle) * c.speed;
     c.x += c.vx * dt; c.y += c.vy * dt;
     for (const off of [-12, 0, 12]) {
@@ -457,9 +460,12 @@ export class Game {
       const fixed = collideCircle(this.world, sx, sy, 12);
       c.x += fixed.x - sx; c.y += fixed.y - sy;
     }
+  }
 
-    // Busted check
-    if (dist(c, p) < 36) {
+  updateBust(dt) {
+    const p = this.player;
+    const caught = this.cars.some((c) => c.type === 'cop' && dist(c, p) < 36);
+    if (caught) {
       this.bustedTimer += dt;
       if (this.bustedTimer > 1.4) this.bust();
     } else {
