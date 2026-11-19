@@ -2,6 +2,8 @@
 
 An unofficial, original open-city driving game that runs entirely in your browser. Not affiliated with any existing game franchise — all code and art are original and procedurally generated.
 
+See the [Architecture Overview](docs/ARCHITECTURE.md) for how the 2D and 3D modes work and how to add a mission.
+
 ![Cruising the coastal highway at sunset](docs/screenshot-3d-drive.png)
 
 ## Play
