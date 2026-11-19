@@ -23,14 +23,14 @@ python3 -m http.server 8000
 
 ## What's in the city
 
-- **Third-person 3D driving** (`3d.html`) — a stylized coastal city at sunset: palm-lined highway with lane dashes, beach and ocean, downtown skyline, traffic, and a helicopter circling overhead
+- **Third-person 3D driving** (main page) — a stylized coastal city at sunset: palm-lined highway with lane dashes, beach and ocean, downtown skyline, traffic, and a helicopter circling overhead
 - **Delivery jobs** — follow the glowing beacon, pick up, and beat the clock across town for cash
 - **Handbrake drifts** — hold Space and throw the car sideways
 - **Chase camera, minimap and HUD** — speed, cash and mission timer always in view
 
 ![Heading for the job beacon](docs/screenshot-3d-mission.png)
 
-There is also a top-down 2D arcade prototype (`index.html`) from the first iteration: on-foot exploration, enter any parked car, police heat system, pedestrians and missions.
+There is also a top-down 2D arcade prototype (`arcade.html`) from the first iteration: on-foot exploration, enter any parked car, police heat system, pedestrians and missions.
 
 ![Top-down arcade mode](docs/screenshot-drive.png)
 
