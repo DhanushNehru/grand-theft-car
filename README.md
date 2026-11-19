@@ -6,7 +6,7 @@ Built with JavaScript, Three.js, and HTML Canvas. No package installation, build
 
 ![Third-person driving along the coastal highway at sunset](docs/screenshot-3d-drive.png)
 
-[Getting started](#getting-started) · [Game modes](#game-modes) · [Controls](#controls) · [Project structure](#project-structure) · [Contributing](#contributing)
+[Getting started](#getting-started) · [Game modes](#game-modes) · [Controls](#controls) ·  <!--· [Project structure](#project-structure) · -->[Contributing](#contributing)
 
 ## Overview
 
@@ -82,6 +82,7 @@ These systems are separate from the 3D mode. On-foot movement, car entry and exi
 
 On-screen touch controls are included for touch devices. In 3D mode they provide steering, acceleration, braking/reverse, and a **DRIFT** button. Mobile layouts and handling are still being improved; a keyboard is a useful starting point for testing.
 
+<!--
 ## Project structure
 
 ```text
@@ -102,7 +103,7 @@ On-screen touch controls are included for touch devices. In 3D mode they provide
 ```
 
 Both modes use JavaScript ES modules. The 3D scene uses original low-poly geometry; the 2D mode renders to Canvas. World generation uses seeded randomness so the layout is reproducible.
-
+-->
 ## Current scope
 
 - Single-player, local browser sessions. No account system or multiplayer service.
