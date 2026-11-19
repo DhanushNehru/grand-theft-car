@@ -1,4 +1,4 @@
-# Grand Theft Car 6
+# Grand Theft Car
 
 An unofficial, original open-city driving game that runs entirely in your browser. Not affiliated with any existing game franchise — all code and art are original and procedurally generated.
 
@@ -8,13 +8,13 @@ An unofficial, original open-city driving game that runs entirely in your browse
 
 The game is a static site. Play it on GitHub Pages here:
 
-**https://dhanushnehru.github.io/grand-theft-car-6/**
+**https://dhanushnehru.github.io/grand-theft-car/**
 
 Or run it locally — any static file server works:
 
 ```bash
-git clone https://github.com/DhanushNehru/grand-theft-car-6.git
-cd grand-theft-car-6
+git clone https://github.com/DhanushNehru/grand-theft-car.git
+cd grand-theft-car
 python3 -m http.server 8000
 # open http://localhost:8000
 ```

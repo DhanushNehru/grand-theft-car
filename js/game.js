@@ -1,4 +1,4 @@
-// Metro Drift — core game loop, entities, physics, AI, missions, rendering.
+// Grand Theft Car Arcade — core game loop, entities, physics, AI, missions, rendering.
 import {
   TILE, GRID, T, buildWorld, tileAt, solidAt, collideCircle, isRoadTile, rng,
 } from './world.js';

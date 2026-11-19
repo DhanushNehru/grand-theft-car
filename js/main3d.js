@@ -1,4 +1,4 @@
-// Metro Drift 3D — stylized coastal-city driving prototype.
+// Grand Theft Car 3D — stylized coastal-city driving prototype.
 // Low-poly Three.js scene: city blocks, palm highway, ocean, sunset,
 // a helicopter overhead, delivery missions. Original geometry only.
 import * as THREE from '../vendor/three.module.js';
@@ -209,6 +209,24 @@ const keymap = { w: 'up', arrowup: 'up', s: 'down', arrowdown: 'down', a: 'left'
 addEventListener('keydown', (e) => { const k = keymap[e.key.toLowerCase()]; if (k) { e.preventDefault(); keys[k] = 1; } });
 addEventListener('keyup', (e) => { const k = keymap[e.key.toLowerCase()]; if (k) keys[k] = 0; });
 
+// On-screen touch controls (shown on coarse-pointer devices by CSS).
+{
+  const touchUI = document.getElementById('touch');
+  if (touchUI) {
+    for (const btn of touchUI.querySelectorAll('button')) {
+      const k = btn.dataset.k;
+      const on = (e) => { e.preventDefault(); keys[k] = 1; };
+      const off = (e) => { e.preventDefault(); keys[k] = 0; };
+      btn.addEventListener('touchstart', on, { passive: false });
+      btn.addEventListener('touchend', off, { passive: false });
+      btn.addEventListener('touchcancel', off, { passive: false });
+      btn.addEventListener('mousedown', on);
+      btn.addEventListener('mouseup', off);
+      btn.addEventListener('mouseleave', off);
+    }
+  }
+}
+
 function toast(text, ms = 2000) {
   el['toast'].textContent = text;
   el['toast'].classList.add('show');
@@ -236,14 +254,14 @@ function collideBuildings(c) {
 function update(dt) {
   state.time += dt;
   // car physics (same arcade model as the 2D build, on the XZ plane)
-  if (keys.up) car.speed += 34 * dt * 10;
-  else if (keys.down) car.speed -= (car.speed > 0 ? 60 : 26) * dt * 10;
+  if (keys.up) car.speed += 34 * dt * 0.45;
+  else if (keys.down) car.speed -= (car.speed > 0 ? 60 * 0.8 : 26 * 0.5) * dt;
   else car.speed -= car.speed * 1.4 * dt;
   car.speed = Math.max(-12, Math.min(34, car.speed));
   const steer = (keys.right - keys.left);
   if (Math.abs(car.speed) > 1.5) {
     const grip = Math.min(1, Math.abs(car.speed) / 16);
-    car.angle -= steer * 2.3 * grip * dt * Math.sign(car.speed) * (keys.brake ? 1.7 : 1);
+    car.angle -= steer * 1.5 * grip * dt * Math.sign(car.speed) * (keys.brake ? 1.8 : 1);
   }
   if (keys.brake) car.speed -= car.speed * 2.2 * dt;
   const gripT = keys.brake ? 2.4 : 9;
@@ -322,11 +340,13 @@ function render() {
     el['mission-timer'].classList.toggle('low', state.timer < 10);
   } else el['mission-timer'].textContent = '';
 
-  // minimap: dots over a simple grid
+  // minimap: dots over a simple grid; the view spans the whole city
+  // plus the coastal highway and beach strip so player and beacon stay visible
   mm.clearRect(0, 0, 168, 168);
   mm.fillStyle = '#14181f'; mm.fillRect(0, 0, 168, 168);
-  const s = 168 / (CITY_W + 60);
-  const px = (x) => (x + CITY_W / 2 + 30) * s;
+  const MAP_MIN = -CITY_W / 2 - 10, MAP_MAX = COAST_X + ROAD + 60;
+  const s = 168 / (MAP_MAX - MAP_MIN);
+  const px = (x) => (x - MAP_MIN) * s;
   mm.fillStyle = '#4a5160';
   for (let i = 0; i <= CITY_N; i++) {
     mm.fillRect(0, px(-CITY_W / 2 + ROAD / 2 + i * PITCH) - 1, 168, 2);

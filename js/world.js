@@ -1,4 +1,4 @@
-// Metro Drift — city generation.
+// Grand Theft Car Arcade — city generation.
 // The city is a deterministic tile grid: streets every few blocks,
 // buildings, parks and parking lots generated from a fixed seed so
 // every player drives the same city.

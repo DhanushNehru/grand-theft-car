@@ -1,4 +1,4 @@
-# Contributing to Grand Theft Car 6
+# Contributing to Grand Theft Car
 
 Thanks for wanting to make the city better.
 
