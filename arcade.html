@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Grand Theft Car Arcade — top-down city driving in your browser</title>
+<meta name="description" content="Grand Theft Car Arcade: a free top-down city browser game. Cruise the city on foot or behind the wheel, run deliveries, and outdrive the heat.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game"></canvas>
+
+  <div id="hud">
+    <div id="hud-left">
+      <div id="cash">$0</div>
+      <div id="heat" title="Heat"></div>
+    </div>
+    <div id="mission-box">
+      <div id="mission-title"></div>
+      <div id="mission-text"></div>
+      <div id="mission-timer"></div>
+    </div>
+    <canvas id="minimap" width="168" height="168"></canvas>
+    <div id="speed"></div>
+    <div id="hint"></div>
+    <div id="toast"></div>
+  </div>
+
+  <div id="overlay">
+    <div id="overlay-card">
+      <h1>METRO DRIFT</h1>
+      <p class="tag">An open city in your browser. Walk, drive, deliver, dodge the heat.</p>
+      <div class="controls-grid">
+        <div><b>W A S D</b><span>walk / drive</span></div>
+        <div><b>E</b><span>enter / exit car</span></div>
+        <div><b>Space</b><span>handbrake</span></div>
+        <div><b>M</b><span>mute</span></div>
+      </div>
+      <p class="tag">Find the glowing marker to start a delivery job.</p>
+      <button id="start-btn">Hit the streets</button>
+    </div>
+  </div>
+
+  <div id="busted" class="hidden">
+    <h1>BUSTED</h1>
+    <p id="busted-sub">The city takes its cut.</p>
+  </div>
+
+  <div id="touch" class="hidden">
+    <div class="t-cluster left">
+      <button data-k="left">◀</button>
+      <button data-k="right">▶</button>
+    </div>
+    <div class="t-cluster right">
+      <button data-k="action">E</button>
+      <button data-k="brake">▼</button>
+      <button data-k="gas">▲</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
