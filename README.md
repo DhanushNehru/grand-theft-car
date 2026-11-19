@@ -1,49 +1,52 @@
-# Metro Drift
+# Grand Theft Car 6
 
-An open-city driving game that runs entirely in your browser. No installs, no build step, no accounts — open the page and hit the streets.
+An unofficial, original open-city driving game that runs entirely in your browser. Not affiliated with any existing game franchise — all code and art are original and procedurally generated.
 
-![Cruising through the city](docs/screenshot-drive.png)
+![Cruising the coastal highway at sunset](docs/screenshot-3d-drive.png)
 
 ## Play
 
 The game is a static site. Play it on GitHub Pages here:
 
-**https://dhanushnehru.github.io/metro-drift/**
+**https://dhanushnehru.github.io/grand-theft-car-6/**
 
 Or run it locally — any static file server works:
 
 ```bash
-git clone https://github.com/DhanushNehru/metro-drift.git
-cd metro-drift
+git clone https://github.com/DhanushNehru/grand-theft-car-6.git
+cd grand-theft-car-6
 python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-(ES modules need to be served over HTTP, so opening `index.html` directly from disk won't work.)
+(ES modules need to be served over HTTP, so opening the HTML files directly from disk won't work.)
 
 ## What's in the city
 
-- **On foot or behind the wheel** — walk the sidewalks, hop into any parked car, or "borrow" one from traffic if you're feeling reckless
-- **Delivery jobs** — find the glowing marker, pick up, and beat the clock across town for cash
-- **Heat system** — run people over or smash up traffic and the police come looking; lie low and it blows over
-- **Living city** — traffic that keeps to its lane, pedestrians, parks, parking lots, and a procedurally generated layout that's the same city for everyone
+- **Third-person 3D driving** (`3d.html`) — a stylized coastal city at sunset: palm-lined highway with lane dashes, beach and ocean, downtown skyline, traffic, and a helicopter circling overhead
+- **Delivery jobs** — follow the glowing beacon, pick up, and beat the clock across town for cash
 - **Handbrake drifts** — hold Space and throw the car sideways
-- **Touch controls** — playable on a phone browser too
+- **Chase camera, minimap and HUD** — speed, cash and mission timer always in view
 
-![On the way to a job](docs/screenshot-mission.png)
+![Heading for the job beacon](docs/screenshot-3d-mission.png)
+
+There is also a top-down 2D arcade prototype (`index.html`) from the first iteration: on-foot exploration, enter any parked car, police heat system, pedestrians and missions.
+
+![Top-down arcade mode](docs/screenshot-drive.png)
 
 ## Controls
 
 | Key | Action |
 | --- | --- |
-| `W` `A` `S` `D` / arrows | Walk / drive |
-| `E` | Enter / exit a car |
+| `W` `A` `S` `D` / arrows | Drive (walk in the 2D prototype) |
 | `Space` | Handbrake |
-| `M` | Mute / unmute |
+| `E` | Enter / exit a car (2D prototype) |
+| `M` | Mute / unmute (2D prototype) |
 
 ## How it works
 
-Plain HTML canvas and vanilla JavaScript modules — no dependencies, no framework, no bundler. The city is generated deterministically from a seed in `js/world.js`; game logic, physics, traffic and police AI live in `js/game.js`.
+- 3D mode: [Three.js](https://threejs.org/) (vendored in `vendor/`) with low-poly original geometry, chase camera and arcade car physics in `js/main3d.js`
+- 2D mode: plain HTML canvas and vanilla JavaScript modules, deterministic seeded city in `js/world.js`
 
 ## Contributing
 

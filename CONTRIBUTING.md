@@ -1,4 +1,4 @@
-# Contributing to Metro Drift
+# Contributing to Grand Theft Car 6
 
 Thanks for wanting to make the city better.
 
